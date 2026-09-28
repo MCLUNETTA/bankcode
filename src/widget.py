@@ -1,4 +1,4 @@
-import masks
+from src import masks
 
 
 def mask_account_card(info: str) -> str:
