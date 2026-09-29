@@ -1,5 +1,6 @@
 import masks
 
+
 def mask_account_card(info: str) -> str:
     """Маскирует номер карты или счета в зависимости от типа."""
     parts = info.split()
