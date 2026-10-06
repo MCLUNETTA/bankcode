@@ -1,4 +1,5 @@
 import json
+import logging
 from unittest.mock import mock_open, patch
 
 from src.utils import get_financial_data
@@ -23,3 +24,10 @@ def test_get_financial_data_invalid_json():
     with patch("builtins.open", mock_open(read_data="invalid json")):
         with patch("os.path.exists", return_value=True):
             assert get_financial_data("dummy_path.json") == []
+
+
+def test_get_financial_data_logging(caplog):
+    """Тест проверяет, что при отсутствии файла записывается ERROR в лог."""
+    with caplog.at_level(logging.ERROR):
+        get_financial_data("non_existent_file.json")
+        assert "Файл не найден по пути: non_existent_file.json" in caplog.text
