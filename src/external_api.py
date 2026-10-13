@@ -1,4 +1,5 @@
 import os
+
 import requests
 from dotenv import load_dotenv
 
@@ -18,6 +19,9 @@ def convert_to_rub(transaction: dict) -> float:
 
     if code in ["USD", "EUR"]:
         api_key = os.getenv("API_KEY")
+        if not api_key:
+            return 0.0
+
         url = f"https://api.apilayer.com/exchangerates_data/convert?to=RUB&from={code}&amount={amount}"
         headers = {"apikey": api_key}
         try:

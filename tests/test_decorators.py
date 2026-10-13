@@ -1,14 +1,11 @@
-
-
 import pytest
 
 from src.decorators import log
 
-
 # Тест 1: Успешное выполнение с выводом в консоль
-def test_log_console_success(capsys):
+def test_log_console_success(capsys) -> None:
     @log()
-    def add(x, y):
+    def add(x, y) -> None:
         return x + y
 
     result = add(2, 3)
@@ -18,7 +15,7 @@ def test_log_console_success(capsys):
 
 
 # Тест 2: Ошибка с выводом в консоль
-def test_log_console_error(capsys):
+def test_log_console_error(capsys) -> None:
     @log()
     def divide(x, y):
         return x / y
@@ -31,7 +28,7 @@ def test_log_console_error(capsys):
 
 
 # Тест 3: Успешное выполнение с записью в файл
-def test_log_file_success(tmp_path):
+def test_log_file_success(tmp_path) -> None:
     log_file = tmp_path / "test_log.txt"
 
     @log(filename=str(log_file))
@@ -44,11 +41,11 @@ def test_log_file_success(tmp_path):
 
 
 # Тест 4: Ошибка с записью в файл
-def test_log_file_error(tmp_path):
+def test_log_file_error(tmp_path) -> None:
     log_file = tmp_path / "test_log.txt"
 
     @log(filename=str(log_file))
-    def divide(x, y):
+    def divide(x, y) -> None:
         return x / y
 
     with pytest.raises(ZeroDivisionError):
