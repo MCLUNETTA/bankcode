@@ -1,7 +1,8 @@
 import os
 from typing import Any
-from src.utils import get_financial_data, read_transactions_from_csv, read_transactions_from_excel
+
 from src.processing import process_bank_search
+from src.utils import get_financial_data, read_transactions_from_csv, read_transactions_from_excel
 
 
 def main() -> None:

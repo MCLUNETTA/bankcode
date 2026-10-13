@@ -2,6 +2,7 @@ import pytest
 
 from src.decorators import log
 
+
 # Тест 1: Успешное выполнение с выводом в консоль
 def test_log_console_success(capsys) -> None:
     @log()
